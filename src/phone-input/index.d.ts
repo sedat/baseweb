@@ -322,17 +322,40 @@ export interface PhoneInputOverrides {
   CountrySelectDropdownDialcodeColumn?: Override<any>;
   FlagContainer?: Override<any>;
 }
+
+export type mapIsoToLabelT = (iso: string) => string;
+
 export interface PhoneInputProps {
   'aria-label'?: string;
-  text?: string;
-  country?: Country;
-  onTextChange?: (event: React.SyntheticEvent<HTMLInputElement>) => any;
-  onCountryChange?: (event: OnChangeParams) => any;
-  mapIsoToLabel?: (iso: string) => string;
-  size?: SIZE[keyof SIZE];
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
+  country: Country;
+  disabled: boolean;
+  error: boolean;
+  id?: string;
   maxDropdownHeight?: string;
   maxDropdownWidth?: string;
-  overrides?: PhoneInputOverrides;
+  mapIsoToLabel?: mapIsoToLabelT;
+  name?: string;
+  onCountryChange?: (event: OnChangeParams) => any;
+  onTextChange?: (event: React.SyntheticEvent<HTMLInputElement>) => any;
+  overrides: {
+    Input?: Override<any>;
+    CountrySelectContainer?: Override<any>;
+    CountrySelectDropdown?: Override<any>;
+    CountrySelectDropdownListItem?: Override<any>;
+    CountrySelectDropdownFlagColumn?: Override<any>;
+    CountrySelectDropdownNameColumn?: Override<any>;
+    CountrySelectDropdownDialcodeColumn?: Override<any>;
+    DialCode?: Override<any>;
+    CountrySelect?: Override<any>;
+    FlagContainer?: Override<any>;
+  };
+  placeholder?: string;
+  positive: boolean;
+  required: boolean;
+  size?: SIZE[keyof SIZE];
+  text?: string;
 }
 export const PhoneInput: React.FC<PhoneInputProps>;
 
